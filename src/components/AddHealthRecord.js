@@ -18,7 +18,7 @@ const AddHealthRecord = () => {
       bloodPressure: { systolic, diastolic },
       heartRate,
     };
-
+console.log(newRecord)
     axios
       .post("https://healthbe.onrender.com/api/health-records", newRecord)
       .then(() => navigate("/"))

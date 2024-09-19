@@ -7,14 +7,27 @@ const HealthDashboard = () => {
   const [records, setRecords] = useState([]);
   const [search, setSearch] = useState("");
 
+  // Filter records based on date or heart rate
   const filteredRecords = records.filter((record) => {
-    return record.date.includes(search) || record.heartRate > search;
+    // Check if the search value is a number
+    const searchValue = parseFloat(search);
+
+    // If it's a number, filter by heart rate
+    if (!isNaN(searchValue)) {
+      return record.heartRate >= searchValue;
+    }
+
+    // Otherwise, filter by date
+    return record.date.includes(search);
   });
 
   useEffect(() => {
     axios
       .get("https://healthbe.onrender.com/api/health-records")
-      .then((response) => setRecords(response.data))
+      .then((response) => {
+        setRecords(response.data);
+        console.log(response.data);
+      })
       .catch((error) => console.error("Error fetching records", error));
   }, []);
 
@@ -87,7 +100,9 @@ const HealthDashboard = () => {
                     {record.bloodPressure.systolic}/
                     {record.bloodPressure.diastolic}
                   </td>
-                  <td className="py-3 px-6 text-left">{record.heartRate} bpm</td>
+                  <td className="py-3 px-6 text-left">
+                    {record.heartRate} bpm
+                  </td>
                   <td className="py-3 px-6 text-center">
                     <Link
                       to={`/health-record/${record._id}`}
