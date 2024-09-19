@@ -20,7 +20,7 @@ const AddHealthRecord = () => {
     };
 
     axios
-      .post("http://localhost:5000/api/health-records", newRecord)
+      .post("https://healthbe.onrender.com/api/health-records", newRecord)
       .then(() => navigate("/"))
       .catch((error) => console.error("Error adding record", error));
   };

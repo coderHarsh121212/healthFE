@@ -18,7 +18,7 @@ const HealthRecordDetail = () => {
   useEffect(() => {
     // Fetch the health record details
     axios
-      .get(`http://localhost:5000/api/health-records/${id}`)
+      .get(`https://healthbe.onrender.com/api/health-records/${id}`)
       .then((response) => {
         setRecord(response.data);
         setFormData({
@@ -34,7 +34,7 @@ const HealthRecordDetail = () => {
 
   const handleDelete = () => {
     axios
-      .delete(`http://localhost:5000/api/health-records/${id}`)
+      .delete(`https://healthbe.onrender.com/api/health-records/${id}`)
       .then(() => navigate("/"))
       .catch((error) => console.error("Error deleting record", error));
   };
@@ -66,7 +66,7 @@ const HealthRecordDetail = () => {
 
     // Call PUT API to update the record
     axios
-      .put(`http://localhost:5000/api/health-records/${id}`, updatedRecord)
+      .put(`https://healthbe.onrender.com/api/health-records/${id}`, updatedRecord)
       .then((response) => {
         setRecord(response.data); // Update the record in the state
         setIsEditing(false); // Exit edit mode

@@ -13,14 +13,14 @@ const HealthDashboard = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/health-records")
+      .get("https://healthbe.onrender.com/api/health-records")
       .then((response) => setRecords(response.data))
       .catch((error) => console.error("Error fetching records", error));
   }, []);
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:5000/api/health-records/${id}`)
+      .delete(`https://healthbe.onrender.com/api/health-records/${id}`)
       .then(() => {
         setRecords(records.filter((record) => record._id !== id));
       })
