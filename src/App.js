@@ -1,24 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import {  Route, BrowserRouter, Routes } from "react-router-dom";
+import HealthDashboard from "./components/HealthDashboard";
+import AddHealthRecord from "./components/AddHealthRecord";
+import HealthRecordDetail from "./components/HealthRecordDetail";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/"  element={<HealthDashboard/>} />
+      <Route path="/add" element={<AddHealthRecord/>} />
+      <Route path="/health-record/:id" element={<HealthRecordDetail/>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
