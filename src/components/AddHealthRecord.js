@@ -19,6 +19,8 @@ const AddHealthRecord = () => {
       heartRate,
     };
 console.log(newRecord)
+
+//post api called
     axios
       .post("https://healthbe.onrender.com/api/health-records", newRecord)
       .then(() => navigate("/"))
